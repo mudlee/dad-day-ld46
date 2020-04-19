@@ -9,6 +9,7 @@ public class Fathercontroller : MonoBehaviour
 {
     public static string TAG_NAME = "Player";
     public GameObject babyPrefab;
+    public GameController gameController;
     private Rigidbody2D _rigidbody;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
@@ -43,6 +44,11 @@ public class Fathercontroller : MonoBehaviour
             var baby = Instantiate(babyPrefab);
             baby.transform.position = transform.position;
             _grabbedBabies--;
+
+            if(_grabbedBabies == 0)
+            {
+                gameController.NotifyNoBabiesGrabbed();
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && _visibleBabies.Count > 0)
@@ -60,6 +66,11 @@ public class Fathercontroller : MonoBehaviour
                 _visibleBabies.Remove(baby);
                 Destroy(gameObj);
                 _grabbedBabies++;
+            }
+
+            if(_grabbedBabies>0)
+            {
+                gameController.NotifyBabyGrabbed();
             }
         }
     }

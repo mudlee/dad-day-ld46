@@ -7,7 +7,7 @@
 public class BabyController : MonoBehaviour
 {
     public static string TAG_NAME = "Baby";
-    public GameController gameController;
+    private GameController _gameController;
     private Rigidbody2D _rigidbody;
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
@@ -30,6 +30,7 @@ public class BabyController : MonoBehaviour
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider = GetComponent<BoxCollider2D>();
+        _gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
     }
 
     void FixedUpdate()
@@ -66,7 +67,7 @@ public class BabyController : MonoBehaviour
                 _notSafeLocation = null;
                 var notSafeStuff = collision.gameObject.GetComponent<NotSafeStuff>();
                 var damageType = notSafeStuff.damageType;
-                gameController.NotifyBabyDied(transform.position, damageType, notSafeStuff.name);
+                _gameController.NotifyBabyDied(transform.position, damageType, notSafeStuff.name);
                 Debug.Log(string.Format("Not safe stuff approached {0} - {1}", collision.gameObject.name, damageType));
                 TakeDamage(damageType);
                 notSafeStuff.DoDamage();

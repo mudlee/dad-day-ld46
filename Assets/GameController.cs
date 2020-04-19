@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
     public static bool Running;
     private float _measureTime;
     private int _points;
+    private bool _holdingBabies;
 
     public void StartGame()
     {
@@ -42,6 +43,16 @@ public class GameController : MonoBehaviour
         endPanel.SetActive(true);
     }
 
+    public void NotifyBabyGrabbed()
+    {
+        _holdingBabies = true;
+    }
+
+    public void NotifyNoBabiesGrabbed()
+    {
+        _holdingBabies = false;
+    }
+
     void Awake()
     {
         startPanel.SetActive(true);
@@ -50,7 +61,7 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        if(Running && Time.time >= _measureTime+1)
+        if(Running && !_holdingBabies && Time.time >= _measureTime+1)
         {
             _measureTime = Time.time;
             UpdatePoints(++_points);
