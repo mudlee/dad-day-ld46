@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - NotSafeStuff
+  - Baby
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - CamBoundary
+  - Father
+  - Baby
+  - Objects
+  - Walls
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: House
+    uniqueID: 1058150599
+    locked: 0
+  - name: Human
+    uniqueID: 3376808971
+    locked: 0
+  - name: Object
+    uniqueID: 3900365497
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
